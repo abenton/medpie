@@ -25,10 +25,15 @@ case class Followed(links: List[String]) extends CrawlMsg
 class Logger(outPath: String) extends Actor {
   
   def act() {
-    loop {
-      react {
-	case WriteLog(time, actor, url, dst, msg) => 
-      }
+    react {
+      case WriteLog(time, actor, url, dst, msg) => 
+      case PingLog() =>
+    }
+  }
+  
+  def exit() {
+    reactWithin(0) {
+      
     }
   }
   
